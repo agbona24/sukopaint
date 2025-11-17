@@ -15,6 +15,10 @@ import ScrollProgress from '@/components/ScrollProgress';
 import PaintDrips from '@/components/PaintDrips';
 import MagneticCursor from '@/components/MagneticCursor';
 import InfiniteMarquee from '@/components/InfiniteMarquee';
+import VirtualRoomPainter from '@/components/VirtualRoomPainter';
+import ColorPaletteGenerator from '@/components/ColorPaletteGenerator';
+import ColorMatcher from '@/components/ColorMatcher';
+import PaintTypeComparison from '@/components/PaintTypeComparison';
 
 export default function Home() {
   const marqueeItems = [
@@ -48,6 +52,13 @@ export default function Home() {
 
         <Products />
         <PaintCalculator />
+
+        {/* Interactive Tools Section */}
+        <VirtualRoomPainter />
+        <ColorPaletteGenerator />
+        <ColorMatcher />
+        <PaintTypeComparison />
+
         <WhyChoose />
         <TrustBadges />
         <Testimonials />
