@@ -4,6 +4,8 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa';
 import Image from 'next/image';
 import { useRef } from 'react';
+import LiquidWave from './LiquidWave';
+import PaintParticles from './PaintParticles';
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -20,6 +22,11 @@ export default function Hero() {
 
   return (
     <section ref={ref} id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-orange-50 to-blue-50 overflow-hidden pt-32">
+      {/* Liquid Wave Background */}
+      <LiquidWave />
+
+      {/* Paint Particles */}
+      <PaintParticles />
       {/* Animated Background Elements with Parallax */}
       <motion.div
         className="absolute inset-0 overflow-hidden"

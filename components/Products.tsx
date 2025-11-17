@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { FaPaintRoller, FaSprayCan } from 'react-icons/fa';
-import Image from 'next/image';
+import ProductCard from './ProductCard';
 
 export default function Products() {
   const products = [
@@ -92,99 +92,10 @@ export default function Products() {
           </p>
         </motion.div>
 
-        {/* Products Grid */}
+        {/* Products Grid with 3D Tilt Cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
           {products.map((product, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              whileHover={{ y: -10, scale: 1.03 }}
-              className="relative group"
-            >
-              {/* Card */}
-              <div className="bg-white rounded-2xl shadow-xl overflow-hidden h-full">
-                {/* Product Image */}
-                <div className="relative h-64 bg-white overflow-hidden flex items-center justify-center p-4">
-                  <motion.div
-                    className="relative w-full h-full"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Image
-                      src={product.image}
-                      alt={product.title}
-                      fill
-                      className="object-contain drop-shadow-lg"
-                    />
-                  </motion.div>
-
-                  {/* Overlay Icon */}
-                  <motion.div
-                    className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-90 transition-opacity flex items-center justify-center`}
-                  >
-                    <motion.div
-                      className="text-white text-6xl"
-                      animate={{
-                        rotate: [0, 10, -10, 0],
-                        scale: [1, 1.1, 1],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        delay: index * 0.3,
-                      }}
-                    >
-                      {product.icon}
-                    </motion.div>
-                  </motion.div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-[#001F5B] mb-3">
-                    {product.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed mb-4">
-                    {product.description}
-                  </p>
-
-                  {/* Animated Button */}
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full bg-[#F49C00] text-white py-3 rounded-full font-semibold hover:bg-[#001F5B] transition group-hover:shadow-lg"
-                  >
-                    Learn More
-                  </motion.button>
-                </div>
-
-                {/* Animated Border */}
-                <motion.div
-                  className="absolute inset-0 border-4 border-[#F49C00] rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
-                  animate={{
-                    scale: [1, 1.02, 1],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                  }}
-                />
-              </div>
-
-              {/* Paint Splatter Effect */}
-              <motion.svg
-                className="absolute -bottom-4 -right-4 w-20 h-20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
-                viewBox="0 0 100 100"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 4, repeat: Infinity }}
-              >
-                <circle cx="50" cy="50" r="30" fill="#F49C00" opacity="0.6" />
-                <circle cx="50" cy="50" r="20" fill="#001F5B" opacity="0.8" />
-              </motion.svg>
-            </motion.div>
+            <ProductCard key={index} product={product} index={index} />
           ))}
         </div>
 

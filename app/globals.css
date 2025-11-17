@@ -163,6 +163,135 @@ a:focus-visible {
   top: 0;
 }
 
+/* Paint can shake animation */
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+.hover-shake:hover {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Animated underline */
+.animated-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #F49C00, #001F5B);
+  transition: width 0.3s ease;
+}
+
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* Paint brush stroke reveal */
+@keyframes brushStroke {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+.brush-stroke {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: brushStroke 2s ease-in-out forwards;
+}
+
+/* Pulse animation for CTAs */
+@keyframes pulse-scale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.pulse-cta {
+  animation: pulse-scale 2s ease-in-out infinite;
+}
+
+/* Bounce animation */
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.bounce-cta {
+  animation: bounce-subtle 1s ease-in-out infinite;
+}
+
+/* Color morph animation */
+@keyframes colorMorph {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.color-morph {
+  background: linear-gradient(270deg, #001F5B, #F49C00, #001F5B);
+  background-size: 400% 400%;
+  animation: colorMorph 10s ease infinite;
+}
+
+/* Stagger reveal animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* 3D card effect */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.card-3d:hover {
+  transform: translateZ(20px);
+}
+
 /* Smooth transitions for reduced motion users */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -175,5 +304,11 @@ a:focus-visible {
 
   html {
     scroll-behavior: auto;
+  }
+
+  .hover-shake:hover,
+  .pulse-cta,
+  .bounce-cta {
+    animation: none;
   }
 }

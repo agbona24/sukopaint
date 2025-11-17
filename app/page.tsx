@@ -12,11 +12,28 @@ import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
 import WhatsAppChat from '@/components/WhatsAppChat';
 import ScrollProgress from '@/components/ScrollProgress';
+import PaintDrips from '@/components/PaintDrips';
+import MagneticCursor from '@/components/MagneticCursor';
+import InfiniteMarquee from '@/components/InfiniteMarquee';
 
 export default function Home() {
+  const marqueeItems = [
+    'Premium Quality Paint',
+    'Made in Nigeria',
+    'Durable & Long-lasting',
+    'Vibrant Colors',
+    '100% Satisfaction Guaranteed',
+    'Fast Delivery',
+    'Expert Support',
+  ];
+
   return (
     <>
+      {/* Global Animation Components */}
       <ScrollProgress />
+      <PaintDrips />
+      <MagneticCursor />
+
       <a href="#main-content" className="skip-to-content">
         Skip to main content
       </a>
@@ -25,6 +42,10 @@ export default function Home() {
         <Hero />
         <About />
         <Services />
+
+        {/* Infinite Marquee Feature Highlight */}
+        <InfiniteMarquee items={marqueeItems} speed={40} />
+
         <Products />
         <PaintCalculator />
         <WhyChoose />
