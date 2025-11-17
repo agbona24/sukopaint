@@ -39,20 +39,6 @@ function StatCounter({ value, suffix = '', prefix = '' }: StatCounterProps) {
 export default function TrustBadges() {
   const stats = [
     {
-      icon: <FaAward />,
-      value: 15,
-      suffix: '+',
-      label: 'Years in Business',
-      color: 'from-blue-500 to-blue-600',
-    },
-    {
-      icon: <FaCheckCircle />,
-      value: 5000,
-      suffix: '+',
-      label: 'Projects Completed',
-      color: 'from-green-500 to-green-600',
-    },
-    {
       icon: <FaUsers />,
       value: 3500,
       suffix: '+',
@@ -65,6 +51,13 @@ export default function TrustBadges() {
       suffix: '',
       label: 'Paint Types Available',
       color: 'from-orange-500 to-orange-600',
+    },
+    {
+      icon: <FaCheckCircle />,
+      value: 10000,
+      suffix: '+',
+      label: 'Paint Cans Sold',
+      color: 'from-green-500 to-green-600',
     },
   ];
 
@@ -112,7 +105,7 @@ export default function TrustBadges() {
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {stats.map((stat, index) => (
             <motion.div
               key={index}

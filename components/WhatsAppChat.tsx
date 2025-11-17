@@ -6,11 +6,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 export default function WhatsAppChat() {
   const phoneNumber = '23488828606'; // Format: country code + number without +
   const defaultMessage = 'Hello! I would like to inquire about Suko Paint products.';
-
-  const handleWhatsAppClick = () => {
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
-    window.open(url, '_blank');
-  };
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
 
   return (
     <>
@@ -22,8 +18,10 @@ export default function WhatsAppChat() {
         transition={{ delay: 1, type: 'spring' }}
       >
         {/* Main WhatsApp Button */}
-        <motion.button
-          onClick={handleWhatsAppClick}
+        <motion.a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-2xl hover:bg-[#20bd5a] transition"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -38,11 +36,11 @@ export default function WhatsAppChat() {
           aria-label="Chat on WhatsApp"
         >
           <FaWhatsapp className="text-3xl" />
-        </motion.button>
+        </motion.a>
 
         {/* Notification Badge */}
         <motion.div
-          className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold"
+          className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold pointer-events-none"
           animate={{
             scale: [1, 1.2, 1],
           }}
@@ -53,7 +51,7 @@ export default function WhatsAppChat() {
 
         {/* Pulse Ring */}
         <motion.div
-          className="absolute inset-0 rounded-full bg-[#25D366] opacity-30"
+          className="absolute inset-0 rounded-full bg-[#25D366] opacity-30 pointer-events-none"
           animate={{
             scale: [1, 1.5, 1.5],
             opacity: [0.3, 0, 0],
