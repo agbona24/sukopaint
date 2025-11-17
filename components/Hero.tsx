@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
@@ -136,104 +137,79 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right Content - Animated Paint Cans */}
+          {/* Right Content - Product Images */}
           <div className="relative h-[500px] hidden lg:block">
+            {/* Main Hero Image */}
             <motion.div
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5, type: "spring" }}
+              className="relative h-full w-full"
             >
-              {/* Main Paint Can */}
-              <motion.svg
-                className="w-64 h-64"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.5, type: "spring" }}
-                viewBox="0 0 200 200"
-              >
-                {/* Paint Can Body */}
-                <motion.ellipse
-                  cx="100"
-                  cy="180"
-                  rx="60"
-                  ry="10"
-                  fill="#333"
-                  opacity="0.2"
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-                <motion.rect
-                  x="50"
-                  y="60"
-                  width="100"
-                  height="120"
-                  fill="#001F5B"
-                  rx="5"
-                  initial={{ y: 100, opacity: 0 }}
-                  animate={{ y: 60, opacity: 1 }}
-                  transition={{ delay: 0.7 }}
-                />
-                <motion.ellipse
-                  cx="100"
-                  cy="60"
-                  rx="50"
-                  ry="8"
-                  fill="#F49C00"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.9 }}
-                />
-
-                {/* Label */}
-                <rect x="60" y="90" width="80" height="60" fill="white" rx="3" />
-                <text x="100" y="115" fontSize="14" fontWeight="bold" fill="#001F5B" textAnchor="middle">SUKO</text>
-                <text x="100" y="135" fontSize="10" fill="#F49C00" textAnchor="middle">PAINT</text>
-
-                {/* Handle */}
-                <motion.path
-                  d="M 80 50 Q 100 30 120 50"
-                  stroke="#666"
-                  strokeWidth="4"
-                  fill="none"
-                  strokeLinecap="round"
-                  animate={{ rotate: [0, -5, 0, 5, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-              </motion.svg>
-            </motion.div>
-
-            {/* Floating Paint Splatters */}
-            {[...Array(8)].map((_, i) => (
               <motion.div
-                key={i}
-                className="absolute w-20 h-20"
-                style={{
-                  left: `${20 + (i % 4) * 25}%`,
-                  top: `${20 + Math.floor(i / 4) * 60}%`,
-                }}
                 animate={{
                   y: [0, -20, 0],
-                  rotate: [0, 180, 360],
                 }}
                 transition={{
-                  duration: 3 + i * 0.5,
+                  duration: 4,
                   repeat: Infinity,
-                  delay: i * 0.2,
+                  ease: "easeInOut",
+                }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src="/images/hero-image.jpg"
+                  alt="Suko Paint Products"
+                  fill
+                  className="object-contain drop-shadow-2xl"
+                  priority
+                />
+              </motion.div>
+
+              {/* Floating Product Images */}
+              <motion.div
+                className="absolute -bottom-10 -left-10 w-32 h-32"
+                animate={{
+                  y: [0, -15, 0],
+                  rotate: [0, 5, 0],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  delay: 0.5,
                 }}
               >
-                <svg viewBox="0 0 100 100" className="w-full h-full">
-                  <motion.circle
-                    cx="50"
-                    cy="50"
-                    r="20"
-                    fill={i % 2 === 0 ? "#001F5B" : "#F49C00"}
-                    opacity="0.3"
-                    animate={{ scale: [1, 1.3, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: i * 0.1 }}
-                  />
-                </svg>
+                <Image
+                  src="/images/hero-img2-p.png"
+                  alt="Paint Can"
+                  fill
+                  className="object-contain drop-shadow-xl"
+                />
               </motion.div>
-            ))}
+
+              {/* Decorative Circles */}
+              {[...Array(5)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-16 h-16 rounded-full"
+                  style={{
+                    left: `${15 + i * 20}%`,
+                    top: `${10 + (i % 2) * 70}%`,
+                    background: i % 2 === 0 ? 'rgba(0, 31, 91, 0.1)' : 'rgba(244, 156, 0, 0.1)',
+                    border: `2px solid ${i % 2 === 0 ? '#001F5B' : '#F49C00'}`,
+                  }}
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 0.6, 0.3],
+                  }}
+                  transition={{
+                    duration: 2 + i * 0.5,
+                    repeat: Infinity,
+                    delay: i * 0.2,
+                  }}
+                />
+              ))}
+            </motion.div>
           </div>
         </div>
       </div>

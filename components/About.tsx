@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { FaCheckCircle, FaPaintBrush, FaShieldAlt, FaMoneyBillWave } from 'react-icons/fa';
+import Image from 'next/image';
 
 export default function About() {
   const features = [
@@ -41,7 +42,7 @@ export default function About() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Side - Animated Vector Graphics */}
+          {/* Left Side - About Image */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -49,151 +50,48 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="relative h-[500px]"
           >
-            {/* Main Paint Bucket with Dripping Paint */}
-            <motion.svg
-              className="w-full h-full"
-              viewBox="0 0 400 400"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+            {/* Main About Image */}
+            <motion.div
+              animate={{
+                y: [0, -15, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="relative h-full w-full"
             >
-              {/* Paint Drips */}
-              {[30, 50, 70].map((x, i) => (
-                <motion.g key={i}>
-                  <motion.path
-                    d={`M ${x * 3} 150 Q ${x * 3} 200 ${x * 3} 250`}
-                    stroke="#F49C00"
-                    strokeWidth="8"
-                    fill="none"
-                    strokeLinecap="round"
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      delay: i * 0.5,
-                      repeatDelay: 1,
-                    }}
-                  />
-                  <motion.circle
-                    cx={x * 3}
-                    cy={250}
-                    r={6}
-                    fill="#F49C00"
-                    initial={{ opacity: 0, y: -100 }}
-                    animate={{ opacity: [0, 1, 0], y: 0 }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      delay: i * 0.5,
-                      repeatDelay: 1,
-                    }}
-                  />
-                </motion.g>
-              ))}
+              <Image
+                src="/images/about-img.png"
+                alt="About Suko Paint"
+                fill
+                className="object-contain drop-shadow-2xl"
+              />
+            </motion.div>
 
-              {/* Large Paint Bucket */}
-              <motion.g
-                initial={{ y: -50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.3, type: 'spring' }}
-              >
-                {/* Bucket Body */}
-                <motion.path
-                  d="M 120 150 L 100 280 Q 100 300 120 300 L 280 300 Q 300 300 300 280 L 280 150 Z"
-                  fill="#001F5B"
-                  stroke="#F49C00"
-                  strokeWidth="3"
-                  animate={{ scale: [1, 1.02, 1] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                />
-
-                {/* Bucket Rim */}
-                <motion.ellipse
-                  cx="200"
-                  cy="150"
-                  rx="90"
-                  ry="20"
-                  fill="#F49C00"
-                  animate={{ scale: [1, 1.05, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-
-                {/* Handle */}
-                <motion.path
-                  d="M 140 140 Q 200 100 260 140"
-                  stroke="#666"
-                  strokeWidth="6"
-                  fill="none"
-                  strokeLinecap="round"
-                  animate={{ rotate: [-2, 2, -2] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  style={{ transformOrigin: '200px 140px' }}
-                />
-
-                {/* Label */}
-                <rect x="150" y="200" width="100" height="60" fill="white" rx="5" />
-                <text x="200" y="225" fontSize="24" fontWeight="bold" fill="#001F5B" textAnchor="middle">
-                  SUKO
-                </text>
-                <text x="200" y="250" fontSize="14" fill="#F49C00" textAnchor="middle">
-                  PAINT
-                </text>
-              </motion.g>
-
-              {/* Floating Paint Swatches */}
-              {[
-                { x: 50, y: 100, color: '#FF6B6B' },
-                { x: 320, y: 120, color: '#4ECDC4' },
-                { x: 30, y: 250, color: '#FFE66D' },
-                { x: 340, y: 280, color: '#A8E6CF' },
-              ].map((swatch, i) => (
-                <motion.g
-                  key={i}
-                  animate={{
-                    y: [0, -15, 0],
-                    rotate: [0, 10, 0, -10, 0],
-                  }}
-                  transition={{
-                    duration: 3 + i * 0.5,
-                    repeat: Infinity,
-                    delay: i * 0.3,
-                  }}
-                >
-                  <rect
-                    x={swatch.x}
-                    y={swatch.y}
-                    width="40"
-                    height="50"
-                    fill={swatch.color}
-                    rx="5"
-                    stroke="#333"
-                    strokeWidth="2"
-                  />
-                  <rect x={swatch.x + 5} y={swatch.y + 5} width="30" height="30" fill="white" opacity="0.3" />
-                </motion.g>
-              ))}
-
-              {/* Sparkles */}
-              {[...Array(8)].map((_, i) => (
-                <motion.circle
-                  key={`sparkle-${i}`}
-                  cx={50 + i * 40}
-                  cy={350}
-                  r="3"
-                  fill="#F49C00"
-                  animate={{
-                    scale: [0, 1.5, 0],
-                    opacity: [0, 1, 0],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: i * 0.2,
-                  }}
-                />
-              ))}
-            </motion.svg>
+            {/* Decorative Elements */}
+            {[...Array(6)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-12 h-12 rounded-full"
+                style={{
+                  left: `${(i % 3) * 35}%`,
+                  top: `${Math.floor(i / 3) * 70 + 10}%`,
+                  background: i % 2 === 0 ? 'rgba(0, 31, 91, 0.1)' : 'rgba(244, 156, 0, 0.1)',
+                  border: `2px solid ${i % 2 === 0 ? '#001F5B' : '#F49C00'}`,
+                }}
+                animate={{
+                  scale: [1, 1.3, 1],
+                  opacity: [0.2, 0.5, 0.2],
+                }}
+                transition={{
+                  duration: 2 + i * 0.3,
+                  repeat: Infinity,
+                  delay: i * 0.3,
+                }}
+              />
+            ))}
           </motion.div>
 
           {/* Right Side - Content */}
