@@ -1,10 +1,21 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaCheckCircle, FaPaintBrush, FaShieldAlt, FaMoneyBillWave } from 'react-icons/fa';
 import Image from 'next/image';
+import { useRef } from 'react';
 
 export default function About() {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
+
+  // Parallax transforms
+  const yImage = useTransform(scrollYProgress, [0, 1], ['20%', '-20%']);
+  const yContent = useTransform(scrollYProgress, [0, 1], ['10%', '-10%']);
+
   const features = [
     {
       icon: <FaPaintBrush />,
@@ -24,7 +35,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-br from-blue-50 to-white relative overflow-hidden">
+    <section ref={ref} id="about" className="py-20 bg-gradient-to-br from-blue-50 to-white relative overflow-hidden">
       {/* Animated Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
@@ -42,12 +53,13 @@ export default function About() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Side - About Image */}
+          {/* Left Side - About Image with Parallax */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            style={{ y: yImage }}
             className="relative h-[500px]"
           >
             {/* Main About Image */}
@@ -94,8 +106,8 @@ export default function About() {
             ))}
           </motion.div>
 
-          {/* Right Side - Content */}
-          <div>
+          {/* Right Side - Content with Parallax */}
+          <motion.div style={{ y: yContent }}>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -171,7 +183,7 @@ export default function About() {
                 </motion.a>
               </motion.div>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,14 +1,30 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa';
 import Image from 'next/image';
+import { useRef } from 'react';
 
 export default function Hero() {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', 'end start'],
+  });
+
+  // Parallax transforms for different layers
+  const yBackground = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+  const yContent = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+  const yImage = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-orange-50 to-blue-50 overflow-hidden pt-32">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+    <section ref={ref} id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-orange-50 to-blue-50 overflow-hidden pt-32">
+      {/* Animated Background Elements with Parallax */}
+      <motion.div
+        className="absolute inset-0 overflow-hidden"
+        style={{ y: yBackground }}
+      >
         {/* Floating Paint Drops */}
         {[...Array(10)].map((_, i) => (
           <motion.div
@@ -60,9 +76,12 @@ export default function Hero() {
           <rect x="55" y="35" width="5" height="40" fill="#333" />
           <rect x="50" y="70" width="15" height="8" fill="#666" rx="2" />
         </motion.svg>
-      </div>
+      </motion.div>
 
-      <div className="container mx-auto px-4 z-10">
+      <motion.div
+        className="container mx-auto px-4 z-10"
+        style={{ y: yContent, opacity }}
+      >
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div>
@@ -139,8 +158,11 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right Content - Product Images */}
-          <div className="relative h-[500px] hidden lg:block">
+          {/* Right Content - Product Images with Parallax */}
+          <motion.div
+            className="relative h-[500px] hidden lg:block"
+            style={{ y: yImage }}
+          >
             {/* Main Hero Image */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -212,9 +234,9 @@ export default function Hero() {
                 />
               ))}
             </motion.div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Scroll Indicator */}
       <motion.div

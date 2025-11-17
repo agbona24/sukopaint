@@ -3,8 +3,10 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { FaUser, FaPhone, FaEnvelope, FaHome, FaPaintRoller, FaWhatsapp, FaClipboardList } from 'react-icons/fa';
+import { useToast } from './Toast';
 
 export default function QuoteForm() {
+  const { showToast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -27,7 +29,7 @@ export default function QuoteForm() {
 
     // Validate required fields
     if (!formData.name || !formData.phone) {
-      alert('Please fill in your name and phone number');
+      showToast('Please fill in your name and phone number', 'error');
       return;
     }
 
@@ -44,6 +46,8 @@ export default function QuoteForm() {
 
     const whatsappUrl = `https://wa.me/23488828606?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
+
+    showToast('Quote request sent! Opening WhatsApp...', 'success');
 
     // Reset form
     setFormData({

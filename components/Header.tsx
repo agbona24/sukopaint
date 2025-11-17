@@ -85,7 +85,8 @@ export default function Header() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.9 }}
-              className="bg-[#F49C00] text-white px-6 py-2 rounded-full hover:bg-white hover:text-[#001F5B] transition font-semibold"
+              className="bg-[#F49C00] text-white px-6 py-2 rounded-full hover:bg-white hover:text-[#001F5B] transition font-semibold btn-ripple"
+              aria-label="Order Suko Paint on WhatsApp"
             >
               Order Now
             </motion.a>
@@ -94,7 +95,10 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden text-white text-2xl"
+            className="lg:hidden text-white text-2xl p-2 rounded hover:bg-white/10 transition"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
           >
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
@@ -102,12 +106,15 @@ export default function Header() {
 
         {/* Mobile Menu */}
         <motion.div
+          id="mobile-menu"
           initial={false}
           animate={{
             height: isMenuOpen ? 'auto' : 0,
             opacity: isMenuOpen ? 1 : 0,
           }}
           className="lg:hidden overflow-hidden"
+          role="navigation"
+          aria-label="Mobile navigation"
         >
           <div className="flex flex-col gap-4 pt-4">
             {menuItems.map((item) => (
@@ -125,7 +132,8 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsMenuOpen(false)}
-              className="bg-[#F49C00] text-white px-6 py-2 rounded-full hover:bg-white hover:text-[#001F5B] transition font-semibold text-center"
+              className="bg-[#F49C00] text-white px-6 py-2 rounded-full hover:bg-white hover:text-[#001F5B] transition font-semibold text-center btn-ripple"
+              aria-label="Order Suko Paint on WhatsApp"
             >
               Order Now
             </a>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ToastProvider } from "@/components/Toast";
 
 export const metadata: Metadata = {
   title: "Suko Paint - Premium Paint Made in Nigeria",
@@ -27,7 +28,9 @@ export default function RootLayout({
         '--font-sen': "'Sen', sans-serif",
         '--font-poppins': "'Poppins', sans-serif"
       } as React.CSSProperties}>
-        {children}
+        <ToastProvider>
+          {children}
+        </ToastProvider>
       </body>
     </html>
   );
