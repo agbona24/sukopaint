@@ -107,9 +107,9 @@ export default function Products() {
               {/* Card */}
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden h-full">
                 {/* Product Image */}
-                <div className="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
+                <div className="relative h-64 bg-white overflow-hidden flex items-center justify-center p-4">
                   <motion.div
-                    className="absolute inset-0"
+                    className="relative w-full h-full"
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.3 }}
                   >
@@ -117,11 +117,7 @@ export default function Products() {
                       src={product.image}
                       alt={product.title}
                       fill
-                      className="object-cover"
-                      onError={(e) => {
-                        // Fallback to gradient background if image fails to load
-                        e.currentTarget.style.display = 'none';
-                      }}
+                      className="object-contain drop-shadow-lg"
                     />
                   </motion.div>
 
