@@ -213,16 +213,19 @@ export default function About() {
               </motion.span>
 
               <h2 className="text-4xl md:text-5xl font-bold text-[#001F5B] mb-6">
-                Durable, Vibrant, and Affordable
+                Vibrant, Weather-Resistant & Affordable
               </h2>
 
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                Suko Paint is proudly made in Nigeria to deliver durable, vibrant, and affordable paint solutions.
-                Our products are designed to withstand local weather while giving your walls a smooth, lasting finish.
+                Suko Paint is proudly made in Nigeria to deliver vibrant, weather-resistant, and affordable paint solutions tailored to local needs.
+              </p>
+
+              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                Whether you're revamping a home, styling a hotel, or painting a commercial facility, our paints offer a smooth finish, long-lasting protection, and rich color depth that truly transforms any surface.
               </p>
 
               <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                Whether for homes, offices, or projects, Suko brings color and protection you can trust.
+                Backed by a team of experts and a passion for quality, we don't just sell paint — <span className="font-bold text-[#001F5B]">we bring your space to life.</span>
               </p>
 
               {/* Features */}

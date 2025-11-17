@@ -1,33 +1,45 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaHome, FaBuilding, FaPaintRoller, FaSprayCan } from 'react-icons/fa';
+import { FaPaintRoller, FaSprayCan } from 'react-icons/fa';
+import Image from 'next/image';
 
 export default function Products() {
   const products = [
     {
-      icon: <FaHome />,
-      title: 'Interior Paint',
-      description: 'Smooth, washable finish for your indoor spaces. Low odor and quick-drying.',
-      color: 'from-blue-400 to-blue-600',
-    },
-    {
-      icon: <FaBuilding />,
-      title: 'Exterior Paint',
-      description: 'Weather-resistant formula that protects against sun, rain, and humidity.',
-      color: 'from-orange-400 to-orange-600',
-    },
-    {
       icon: <FaPaintRoller />,
-      title: 'Emulsion Paint',
-      description: 'Premium quality emulsion for walls and ceilings with excellent coverage.',
-      color: 'from-green-400 to-green-600',
+      title: 'Emulsion',
+      description: 'Premium quality emulsion for walls and ceilings with excellent coverage and a smooth, matte finish.',
+      color: 'from-blue-400 to-blue-600',
+      image: '/images/emulsion.jpg',
     },
     {
       icon: <FaSprayCan />,
-      title: 'Gloss Paint',
-      description: 'High-gloss finish for doors, windows, and metal surfaces.',
+      title: 'Satin',
+      description: 'Soft sheen finish that is easy to clean and perfect for high-traffic areas like hallways and living rooms.',
       color: 'from-purple-400 to-purple-600',
+      image: '/images/satin.jpg',
+    },
+    {
+      icon: <FaPaintRoller />,
+      title: 'Matt',
+      description: 'Non-reflective finish ideal for hiding imperfections and creating a sophisticated, modern look.',
+      color: 'from-gray-400 to-gray-600',
+      image: '/images/matt.jpg',
+    },
+    {
+      icon: <FaSprayCan />,
+      title: 'Gloss',
+      description: 'High-gloss finish for doors, windows, and metal surfaces with superior durability and shine.',
+      color: 'from-orange-400 to-orange-600',
+      image: '/images/gloss.jpg',
+    },
+    {
+      icon: <FaPaintRoller />,
+      title: 'Silk',
+      description: 'Luxurious silk finish with a subtle sheen, perfect for feature walls and elegant interiors.',
+      color: 'from-pink-400 to-pink-600',
+      image: '/images/silk.jpg',
     },
   ];
 
@@ -73,15 +85,15 @@ export default function Products() {
             Our Paint Types
           </motion.span>
           <h2 className="text-4xl md:text-5xl font-bold text-[#001F5B] mb-4">
-            Explore Our Premium Paint Products
+            Our Paint Types
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Designed to elevate your space with vibrant colors and long-lasting protection
+            High-quality finishes designed to elevate your space with vibrant colors and long-lasting protection
           </p>
         </motion.div>
 
         {/* Products Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
           {products.map((product, index) => (
             <motion.div
               key={index}
@@ -94,51 +106,45 @@ export default function Products() {
             >
               {/* Card */}
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden h-full">
-                {/* Gradient Header */}
-                <motion.div
-                  className={`bg-gradient-to-br ${product.color} p-8 relative overflow-hidden`}
-                  animate={{
-                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                  }}
-                  transition={{ duration: 5, repeat: Infinity }}
-                >
-                  {/* Animated Icon */}
+                {/* Product Image */}
+                <div className="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
                   <motion.div
-                    className="text-white text-6xl mb-4 relative z-10"
-                    animate={{
-                      rotate: [0, 10, -10, 0],
-                      scale: [1, 1.1, 1],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      delay: index * 0.3,
-                    }}
+                    className="absolute inset-0"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
                   >
-                    {product.icon}
-                  </motion.div>
-
-                  {/* Floating Particles */}
-                  {[...Array(3)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-2 h-2 bg-white rounded-full"
-                      style={{
-                        left: `${30 + i * 25}%`,
-                        top: `${20 + i * 20}%`,
-                      }}
-                      animate={{
-                        y: [0, -20, 0],
-                        opacity: [0.3, 1, 0.3],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: i * 0.4,
+                    <Image
+                      src={product.image}
+                      alt={product.title}
+                      fill
+                      className="object-cover"
+                      onError={(e) => {
+                        // Fallback to gradient background if image fails to load
+                        e.currentTarget.style.display = 'none';
                       }}
                     />
-                  ))}
-                </motion.div>
+                  </motion.div>
+
+                  {/* Overlay Icon */}
+                  <motion.div
+                    className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-90 transition-opacity flex items-center justify-center`}
+                  >
+                    <motion.div
+                      className="text-white text-6xl"
+                      animate={{
+                        rotate: [0, 10, -10, 0],
+                        scale: [1, 1.1, 1],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        delay: index * 0.3,
+                      }}
+                    >
+                      {product.icon}
+                    </motion.div>
+                  </motion.div>
+                </div>
 
                 {/* Content */}
                 <div className="p-6">
