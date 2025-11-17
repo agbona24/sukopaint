@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaPhone, FaEnvelope, FaArrowRight } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaArrowRight, FaWhatsapp } from 'react-icons/fa';
 
 export default function CTA() {
   return (
@@ -101,21 +101,23 @@ export default function CTA() {
             className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12"
           >
             <motion.a
-              href="tel:08088828606"
+              href="https://wa.me/23488828606?text=Hello%20Suko%20Paint!%20I%20would%20like%20a%20free%20color%20consultation%20and%20quote%20for%20my%20project."
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.95 }}
-              className="group bg-[#F49C00] text-white px-10 py-5 rounded-full font-bold text-lg flex items-center gap-3 hover:bg-[#001F5B] transition shadow-2xl w-full sm:w-auto justify-center"
+              className="group bg-[#25D366] text-white px-10 py-5 rounded-full font-bold text-lg flex items-center gap-3 hover:bg-[#20bd5a] transition shadow-2xl w-full sm:w-auto justify-center"
               animate={{
                 boxShadow: [
-                  '0 10px 30px rgba(244, 156, 0, 0.3)',
-                  '0 15px 40px rgba(244, 156, 0, 0.5)',
-                  '0 10px 30px rgba(244, 156, 0, 0.3)',
+                  '0 10px 30px rgba(37, 211, 102, 0.3)',
+                  '0 15px 40px rgba(37, 211, 102, 0.5)',
+                  '0 10px 30px rgba(37, 211, 102, 0.3)',
                 ],
               }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <FaPhone className="text-2xl" />
-              Call Us Now
+              <FaWhatsapp className="text-2xl" />
+              Chat on WhatsApp
               <motion.div
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
@@ -125,13 +127,13 @@ export default function CTA() {
             </motion.a>
 
             <motion.a
-              href="mailto:info@sukopaint.com"
+              href="tel:08088828606"
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.95 }}
               className="border-3 border-[#001F5B] text-[#001F5B] px-10 py-5 rounded-full font-bold text-lg flex items-center gap-3 hover:bg-[#001F5B] hover:text-white transition shadow-lg w-full sm:w-auto justify-center"
             >
-              <FaEnvelope className="text-2xl" />
-              Email Us
+              <FaPhone className="text-2xl" />
+              Call Us
             </motion.a>
           </motion.div>
 

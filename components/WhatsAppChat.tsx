@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 export default function WhatsAppChat() {
   const [isOpen, setIsOpen] = useState(false);
-  const phoneNumber = '2348088828606'; // Format: country code + number without +
+  const phoneNumber = '23488828606'; // Format: country code + number without +
   const defaultMessage = 'Hello! I would like to inquire about Suko Paint products.';
 
   const handleWhatsAppClick = () => {

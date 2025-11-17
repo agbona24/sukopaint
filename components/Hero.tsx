@@ -116,7 +116,9 @@ export default function Hero() {
                 className="flex flex-wrap gap-4"
               >
                 <motion.a
-                  href="#contact"
+                  href="https://wa.me/23488828606?text=Hello%20Suko%20Paint!%20I%20would%20like%20to%20place%20an%20order."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="bg-[#F49C00] text-white px-8 py-4 rounded-full font-bold text-lg flex items-center gap-2 hover:bg-[#001F5B] transition shadow-lg animate-pulse-glow"

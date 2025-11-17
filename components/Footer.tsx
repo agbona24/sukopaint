@@ -223,6 +223,82 @@ export default function Footer() {
             <FaArrowUp />
           </motion.button>
         </div>
+
+        {/* Developer Credit */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-12 pt-8 border-t border-white/20"
+        >
+          <motion.div
+            className="text-center"
+            whileHover={{ scale: 1.02 }}
+          >
+            <p className="text-blue-200 text-sm mb-3">Crafted with excellence by</p>
+            <motion.a
+              href="https://wa.me/2347069716822?text=Hey%20Harzotech!%20I%20saw%20your%20amazing%20work%20on%20the%20Suko%20Paint%20website%20and%20I'm%20impressed!"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#F49C00] to-orange-500 px-8 py-4 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 group"
+              whileHover={{ scale: 1.05, y: -3 }}
+              whileTap={{ scale: 0.98 }}
+              animate={{
+                boxShadow: [
+                  '0 10px 40px rgba(244, 156, 0, 0.4)',
+                  '0 15px 60px rgba(244, 156, 0, 0.6)',
+                  '0 10px 40px rgba(244, 156, 0, 0.4)',
+                ],
+              }}
+              transition={{ duration: 3, repeat: Infinity }}
+            >
+              <motion.div
+                animate={{
+                  rotate: [0, 360],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: 'linear',
+                }}
+              >
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/>
+                </svg>
+              </motion.div>
+
+              <div className="text-left">
+                <motion.div
+                  className="font-bold text-white text-xl leading-tight"
+                  animate={{
+                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                  }}
+                  transition={{ duration: 5, repeat: Infinity }}
+                >
+                  Harzotech
+                </motion.div>
+                <div className="text-white/90 text-sm">Premium Web Solutions</div>
+              </div>
+
+              <motion.svg
+                className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </motion.svg>
+            </motion.a>
+
+            <motion.p
+              className="mt-4 text-blue-200/70 text-xs italic"
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 3, repeat: Infinity }}
+            >
+              Transforming ideas into digital excellence
+            </motion.p>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Decorative Paint Drops */}

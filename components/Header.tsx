@@ -79,7 +79,9 @@ export default function Header() {
               </motion.a>
             ))}
             <motion.a
-              href="#contact"
+              href="https://wa.me/23488828606?text=Hello%20Suko%20Paint!%20I%20would%20like%20to%20place%20an%20order."
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.9 }}
@@ -119,7 +121,9 @@ export default function Header() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="https://wa.me/23488828606?text=Hello%20Suko%20Paint!%20I%20would%20like%20to%20place%20an%20order."
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setIsMenuOpen(false)}
               className="bg-[#F49C00] text-white px-6 py-2 rounded-full hover:bg-white hover:text-[#001F5B] transition font-semibold text-center"
             >

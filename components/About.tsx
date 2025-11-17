@@ -160,7 +160,9 @@ export default function About() {
                 transition={{ delay: 0.6 }}
               >
                 <motion.a
-                  href="#contact"
+                  href="https://wa.me/23488828606?text=Hello%20Suko%20Paint!%20I%20would%20like%20to%20learn%20more%20about%20your%20paint%20products."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="inline-block bg-[#001F5B] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-[#F49C00] transition shadow-lg"
