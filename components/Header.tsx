@@ -2,10 +2,12 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaPhone, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaBars, FaTimes, FaMoon, FaSun } from 'react-icons/fa';
+import { useTheme } from './ThemeProvider';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const menuItems = [
     { name: 'Home', href: '#home' },
@@ -20,10 +22,10 @@ export default function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-[#001F5B] shadow-lg"
+      className="fixed top-0 left-0 right-0 z-50 bg-[#001F5B] dark:bg-[#003D99] shadow-lg"
     >
       {/* Top Bar */}
-      <div className="bg-[#F49C00] text-white py-2">
+      <div className="bg-[#F49C00] dark:bg-[#FFB020] text-white py-2">
         <div className="container mx-auto px-4 flex justify-between items-center text-sm">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -78,6 +80,19 @@ export default function Header() {
                 {item.name}
               </motion.a>
             ))}
+
+            {/* Theme Toggle */}
+            <motion.button
+              onClick={toggleTheme}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.85 }}
+              className="text-white hover:text-[#F49C00] transition text-xl p-2 rounded-full hover:bg-white/10"
+              aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+            >
+              {theme === 'light' ? <FaMoon /> : <FaSun />}
+            </motion.button>
+
             <motion.a
               href="https://wa.me/23488828606?text=Hello%20Suko%20Paint!%20I%20would%20like%20to%20place%20an%20order."
               target="_blank"
@@ -127,6 +142,24 @@ export default function Header() {
                 {item.name}
               </a>
             ))}
+
+            {/* Mobile Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="text-white hover:text-[#F49C00] transition font-medium py-2 flex items-center gap-3"
+              aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+            >
+              {theme === 'light' ? (
+                <>
+                  <FaMoon /> Dark Mode
+                </>
+              ) : (
+                <>
+                  <FaSun /> Light Mode
+                </>
+              )}
+            </button>
+
             <a
               href="https://wa.me/23488828606?text=Hello%20Suko%20Paint!%20I%20would%20like%20to%20place%20an%20order."
               target="_blank"

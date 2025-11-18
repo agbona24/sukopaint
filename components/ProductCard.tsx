@@ -133,7 +133,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
         {/* 3D Shadow Effect */}
         <motion.div
           className="absolute inset-0 bg-gradient-to-br from-transparent to-black/5 pointer-events-none"
-          style={{ transformZ: '-50px' }}
+          style={{ transform: 'translateZ(-50px)' }}
         />
       </motion.div>
     </motion.div>

@@ -115,57 +115,71 @@ export default function PaintCalculator() {
             <div className="space-y-6">
               {/* Length */}
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label htmlFor="room-length" className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
                   Length (meters)
                 </label>
                 <input
+                  id="room-length"
                   type="number"
                   step="0.1"
                   value={length}
                   onChange={(e) => setLength(e.target.value)}
                   placeholder="e.g., 5"
+                  aria-label="Room length in meters"
+                  aria-describedby="length-hint"
                   className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#F49C00] focus:outline-none transition"
                 />
+                <span id="length-hint" className="sr-only">Enter the length of your room in meters</span>
               </div>
 
               {/* Width */}
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label htmlFor="room-width" className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
                   Width (meters)
                 </label>
                 <input
+                  id="room-width"
                   type="number"
                   step="0.1"
                   value={width}
                   onChange={(e) => setWidth(e.target.value)}
                   placeholder="e.g., 4"
+                  aria-label="Room width in meters"
+                  aria-describedby="width-hint"
                   className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#F49C00] focus:outline-none transition"
                 />
+                <span id="width-hint" className="sr-only">Enter the width of your room in meters</span>
               </div>
 
               {/* Height */}
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label htmlFor="room-height" className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
                   Height (meters)
                 </label>
                 <input
+                  id="room-height"
                   type="number"
                   step="0.1"
                   value={height}
                   onChange={(e) => setHeight(e.target.value)}
                   placeholder="e.g., 3"
+                  aria-label="Room height in meters"
+                  aria-describedby="height-hint"
                   className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#F49C00] focus:outline-none transition"
                 />
+                <span id="height-hint" className="sr-only">Enter the height of your room in meters</span>
               </div>
 
               {/* Coats */}
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label htmlFor="paint-coats" className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
                   Number of Coats
                 </label>
                 <select
+                  id="paint-coats"
                   value={coats}
                   onChange={(e) => setCoats(e.target.value)}
+                  aria-label="Number of paint coats"
                   className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#F49C00] focus:outline-none transition"
                 >
                   <option value="1">1 Coat</option>
@@ -193,12 +207,15 @@ export default function PaintCalculator() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="flex flex-col"
+            role="region"
+            aria-live="polite"
+            aria-atomic="true"
           >
             {result ? (
               <motion.div
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
-                className="bg-gradient-to-br from-[#001F5B] to-[#002a7f] rounded-3xl shadow-2xl p-8 text-white"
+                className="bg-gradient-to-br from-[#001F5B] to-[#002a7f] dark:from-[#003D99] dark:to-[#004ab5] rounded-3xl shadow-2xl p-8 text-white"
               >
                 <h3 className="text-3xl font-bold mb-6 text-center">Your Results</h3>
 

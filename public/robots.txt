@@ -1,0 +1,14 @@
+# robots.txt for Suko Paint
+
+User-agent: *
+Allow: /
+
+# Disallow admin or private areas (if any in future)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location
+Sitemap: https://sukopaint.com/sitemap.xml
+
+# Crawl-delay (optional, for being nice to servers)
+Crawl-delay: 1

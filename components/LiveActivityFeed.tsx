@@ -97,6 +97,9 @@ export default function LiveActivityFeed() {
           animate={{ opacity: 1, x: 0, scale: 1 }}
           exit={{ opacity: 0, x: -100, scale: 0.8 }}
           className="fixed bottom-24 left-4 z-[60] max-w-sm"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
         >
           <motion.div
             className="bg-white rounded-2xl shadow-2xl p-4 border-l-4 border-[#F49C00]"

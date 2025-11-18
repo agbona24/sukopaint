@@ -8,6 +8,33 @@
   --background-color: #ffffff;
   --background: #ffffff;
   --foreground: #333333;
+  --card-bg: #ffffff;
+  --border-color: #e5e7eb;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode colors */
+.dark {
+  --primary-color: #003D99; /* lighter navy for dark mode */
+  --accent-color: #FFB020; /* brighter orange for dark mode */
+  --text-color: #e5e7eb;
+  --background-color: #0f172a; /* dark slate */
+  --background: #0f172a;
+  --foreground: #e5e7eb;
+  --card-bg: #1e293b; /* darker slate for cards */
+  --border-color: #334155;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth theme transition */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
 }
 
 @theme inline {
@@ -161,6 +188,19 @@ a:focus-visible {
 
 .skip-to-content:focus {
   top: 0;
+}
+
+/* Screen reader only - visually hidden but accessible to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 /* Paint can shake animation */
