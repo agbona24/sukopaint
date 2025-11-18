@@ -23,6 +23,8 @@ import PaintQuiz from '@/components/PaintQuiz';
 import ProjectPlanner from '@/components/ProjectPlanner';
 import SurfaceGuide from '@/components/SurfaceGuide';
 import LiveActivityFeed from '@/components/LiveActivityFeed';
+import AnimationShowcase from '@/components/AnimationShowcase';
+import { PaintDripDivider } from '@/components/LottieAnimation';
 
 export default function Home() {
   const marqueeItems = [
@@ -56,7 +58,14 @@ export default function Home() {
         <InfiniteMarquee items={marqueeItems} speed={40} />
 
         <Products />
+
+        {/* Paint Drip Divider */}
+        <PaintDripDivider />
+
         <PaintCalculator />
+
+        {/* Animation Showcase Section */}
+        <AnimationShowcase />
 
         {/* Interactive Tools Section */}
         <VirtualRoomPainter />
@@ -68,6 +77,9 @@ export default function Home() {
         <PaintQuiz />
         <ProjectPlanner />
         <SurfaceGuide />
+
+        {/* Paint Drip Divider */}
+        <PaintDripDivider />
 
         <WhyChoose />
         <TrustBadges />

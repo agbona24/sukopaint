@@ -6,6 +6,8 @@ import Image from 'next/image';
 import { useRef } from 'react';
 import LiquidWave from './LiquidWave';
 import PaintParticles from './PaintParticles';
+import { HeroSVGMorph } from './SVGMorph';
+import { HeroLottieIcon } from './LottieAnimation';
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -27,6 +29,13 @@ export default function Hero() {
 
       {/* Paint Particles */}
       <PaintParticles />
+
+      {/* SVG Morphing Animation */}
+      <HeroSVGMorph />
+
+      {/* Lottie Animation Icon */}
+      <HeroLottieIcon />
+
       {/* Animated Background Elements with Parallax */}
       <motion.div
         className="absolute inset-0 overflow-hidden"
