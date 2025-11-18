@@ -8,7 +8,7 @@ import {
   PaintDripEffect,
   PaintDripDivider
 } from './LottieAnimation';
-import { FaPaintBrush, FaSwatchbook, FaMagic } from 'react-icons/fa';
+import { FaPaintBrush, FaSwatchbook } from 'react-icons/fa';
 
 export default function AnimationShowcase() {
   return (
@@ -22,35 +22,6 @@ export default function AnimationShowcase() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <motion.div
-            className="inline-block mb-4"
-            animate={{
-              rotate: [0, 10, -10, 0],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-          >
-            <FaMagic className="text-6xl text-[#F49C00] dark:text-[#FFB020]" />
-          </motion.div>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#001F5B] dark:text-[#FFB020] mb-4">
-            Experience the Magic
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Dynamic animations and smooth transitions bring our paint to life
-          </p>
-        </motion.div>
-
         {/* Animation Grid */}
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* SVG Morphing Demo */}
