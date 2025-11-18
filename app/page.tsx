@@ -19,6 +19,10 @@ import VirtualRoomPainter from '@/components/VirtualRoomPainter';
 import ColorPaletteGenerator from '@/components/ColorPaletteGenerator';
 import ColorMatcher from '@/components/ColorMatcher';
 import PaintTypeComparison from '@/components/PaintTypeComparison';
+import PaintQuiz from '@/components/PaintQuiz';
+import ProjectPlanner from '@/components/ProjectPlanner';
+import SurfaceGuide from '@/components/SurfaceGuide';
+import LiveActivityFeed from '@/components/LiveActivityFeed';
 
 export default function Home() {
   const marqueeItems = [
@@ -37,6 +41,7 @@ export default function Home() {
       <ScrollProgress />
       <PaintDrips />
       <MagneticCursor />
+      <LiveActivityFeed />
 
       <a href="#main-content" className="skip-to-content">
         Skip to main content
@@ -58,6 +63,11 @@ export default function Home() {
         <ColorPaletteGenerator />
         <ColorMatcher />
         <PaintTypeComparison />
+
+        {/* Engagement Tools */}
+        <PaintQuiz />
+        <ProjectPlanner />
+        <SurfaceGuide />
 
         <WhyChoose />
         <TrustBadges />
